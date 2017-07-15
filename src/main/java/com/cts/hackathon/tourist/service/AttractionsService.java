@@ -11,6 +11,8 @@ public class AttractionsService {
 		
 	}
 		
+	//Returning all tourist spots
+	
 		public List<Attraction> getAttractions(){
 			Attraction attraction1 = new Attraction("Mysore Palace", "Its a palace of Mysore royale king");
 			Attraction attraction2= new Attraction("Brindavan Garden", "Its a garden built near the KSR dam.");
@@ -19,6 +21,13 @@ public class AttractionsService {
 			attractionList.add(attraction1);
 			attractionList.add(attraction2);
 			return attractionList;
+		}
+		
+		//Returning only one tourist spot
+		public Attraction getAttraction(){
+			
+			Attraction attraction2= new Attraction("Brindavan Garden", "Its a garden built near the KSR dam.");
+			return attraction2;
 		}
 	
 
