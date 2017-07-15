@@ -41,7 +41,8 @@ public class Attractions {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Attraction getAttraction() {
 		
-
+		System.out.println("Hello, Single attraction logs!");
+		
 		return attractionsService.getAttraction();
 		
 		//return "Attractions in Mysore are -- Brindavan Garden, Mysore Palace, Chamundeshwari Temple";
