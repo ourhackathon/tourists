@@ -11,7 +11,7 @@ public class AttractionsService {
 		
 	}
 		
-	//Returning all tourist spots
+	//returning all tourist spots
 	
 		public List<Attraction> getAttractions(){
 			Attraction attraction1 = new Attraction("Mysore Palace", "Its a palace of Mysore royale king");
