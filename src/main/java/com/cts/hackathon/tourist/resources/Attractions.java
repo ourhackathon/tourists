@@ -19,7 +19,6 @@ import com.cts.hackathon.tourist.database.PlacesData;
 import com.cts.hackathon.tourist.model.Attraction;
 import com.cts.hackathon.tourist.model.City;
 import com.cts.hackathon.tourist.service.AttractionsService;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -93,10 +92,15 @@ public class Attractions {
 			for(int i = 0; i < a1.size(); i++) {
 				success.append(a1.get(i).getPlace() + ", ");
 			}
+			String speech = "{\\\"speech\\\":";
+			String displayText = ",\\\"displayText\\\": \\\"Its beautiful place to visit\\\"}";
+					
+			success.insert(0, speech);
+			success.insert(success.length(), displayText);
 			
-			JsonObject successMessage = new JsonParser()
-					.parse("{\"speech\": success,\"displayText\": \"Places to visit in Mysore are Mysore palace, Brindavan Garden\"}")
-					.getAsJsonObject();
+			String jsonstring = success.toString();
+
+			JsonObject successMessage = new JsonParser().parse(jsonstring).getAsJsonObject();
 			
 			return successMessage.toString();
 
