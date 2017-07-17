@@ -85,7 +85,7 @@ public class Attractions {
 			Map<City, List<Attraction>> m1 = p1.getPointsOfInterest();
 			for(Entry<City, List<Attraction>> e: m1.entrySet()){
 				if(e.getKey().getCity().equals(geoCity)){
-					a1 = e.getValue();
+					a1.add( (Attraction) e.getValue());
 				}
 			}
 			StringBuffer success = new StringBuffer("Places of attractions in "+geoCity + " are: ");
