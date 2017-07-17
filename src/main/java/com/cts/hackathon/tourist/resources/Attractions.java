@@ -92,7 +92,7 @@ public class Attractions {
 			for(int i = 0; i < a1.size(); i++) {
 				success.append(a1.get(i).getPlace() + ", ");
 			}
-			success.deleteCharAt(success.length()+1);
+			success.deleteCharAt(success.length()-1);
 			String speech = "{\"speech\":\"";
 			String displayText = "\",\"displayText\": \"Its beautiful place to visit\"}";
 					
