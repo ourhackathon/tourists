@@ -25,7 +25,10 @@ public class PlacesData {
 		
 		City mysore = new City("Mysore", "22°C Rainy", "12.2958° N, 76.6394° E");
 		List<Attraction> mysoreList = new ArrayList<Attraction>();  
-		mysoreList.add(new Attraction("Mysore Palace", "Palace"));
+		Attraction a = new Attraction();
+		a.setDescripation("");
+		a.setPlace("Mysore Palace");
+		mysoreList.add(a);
 		mysoreList.add(new Attraction("Brindavan Gardens", "Gardens"));
 		mysoreList.add(new Attraction("Mysore Zoo", "Zoo"));
 		mysoreList.add(new Attraction("Chamundeshwari Temple", "Temple"));
