@@ -21,7 +21,7 @@ public class PlacesData {
 		this.pointsOfInterest = pointsOfInterest;
 	}
 	
-	public void setPointsOfInterest() {
+	public PlacesData() {
 		
 		City mysore = new City("Mysore", "22°C Rainy", "12.2958° N, 76.6394° E");
 		List<Attraction> mysoreList = new ArrayList<Attraction>();  
