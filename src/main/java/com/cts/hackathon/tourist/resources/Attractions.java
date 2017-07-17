@@ -93,13 +93,13 @@ public class Attractions {
 				success.append(a1.get(i).getPlace() + ", ");
 			}
 			String speech = "{\"speech\":\"";
-			String displayText = ",\"displayText\": \"Its beautiful place to visit\"}";
+			String displayText = "\\,\"displayText\": \"Its beautiful place to visit\"}";
 					
 			success.insert(0, speech);
 			success.insert(success.length(), displayText);
-			
+			System.out.println(success);
 			String jsonstring = success.toString();
-
+			System.out.println(jsonstring);
 			JsonObject successMessage = new JsonParser().parse(jsonstring).getAsJsonObject();
 			
 			return successMessage.toString();
