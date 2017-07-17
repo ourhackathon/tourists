@@ -95,7 +95,7 @@ public class Attractions {
 			}
 			
 			JsonObject successMessage = new JsonParser()
-					.parse("{\"speech\": \"+success,\"displayText\": \"Places to visit in Mysore are Mysore palace, Brindavan Garden\"}")
+					.parse("{\"speech\": success,\"displayText\": \"Places to visit in Mysore are Mysore palace, Brindavan Garden\"}")
 					.getAsJsonObject();
 			
 			return successMessage.toString();
