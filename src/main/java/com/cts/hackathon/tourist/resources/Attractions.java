@@ -86,13 +86,15 @@ public class Attractions {
 			for(Entry<City, List<Attraction>> e: m1.entrySet()){
 				if(e.getKey().getCity().equals(geoCity)){
 					a1 = e.getValue();
+				} else {
+					return failureMessage.toString();
 				}
 			}
 			StringBuffer success = new StringBuffer("Places of attractions in "+geoCity + " are: ");
 			for(int i = 0; i < a1.size(); i++) {
 				success.append(a1.get(i).getPlace() + ", ");
 			}
-			success.deleteCharAt(success.length()-1);
+			success.deleteCharAt(success.length()-2);
 			String speech = "{\"speech\":\"";
 			String displayText = "\",\"displayText\": \"Its beautiful place to visit\"}";
 					
