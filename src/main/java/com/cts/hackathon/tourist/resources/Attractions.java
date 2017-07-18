@@ -59,9 +59,7 @@ public class Attractions {
 //				.parse("{\"speech\": \"Places to visit in Mysore are Mysore palace, Brindavan Garden\",\"displayText\": \"Places to visit in Mysore are Mysore palace, Brindavan Garden\"}")
 //				.getAsJsonObject();
 
-		JsonObject failureMessage = new JsonParser()
-				.parse("{\"speech\": \"No matching places found for the mentioned city\" ,\"displayText\": \"No matching places found for the mentioned city\"}")
-				.getAsJsonObject();
+		
 
 		JsonObject jsonObj = new JsonParser().parse(json).getAsJsonObject();
 
@@ -78,38 +76,7 @@ public class Attractions {
 		}
 		
 
-		if (geoCity != "") {
-			System.out.println("Geo-city parameter is..." + geoCity);
-			List<Attraction> a1 = new ArrayList<Attraction>();
-			PlacesData p1 = new PlacesData();
-			Map<City, List<Attraction>> m1 = p1.getPointsOfInterest();
-			for(Entry<City, List<Attraction>> e: m1.entrySet()){
-				if(e.getKey().getCity().equals(geoCity)){
-					a1 = e.getValue();
-				} else {
-					return failureMessage.toString();
-				}
-			}
-			StringBuffer success = new StringBuffer("Places of attractions in "+geoCity + " are: ");
-			for(int i = 0; i < a1.size(); i++) {
-				success.append(a1.get(i).getPlace() + ", ");
-			}
-			success.deleteCharAt(success.length()-2);
-			String speech = "{\"speech\":\"";
-			String displayText = "\",\"displayText\": \"Its beautiful place to visit\"}";
-					
-			success.insert(0, speech);
-			success.insert(success.length(), displayText);
-			String jsonstring = success.toString();
-			JsonObject successMessage = new JsonParser().parse(jsonstring).getAsJsonObject();
-			
-			return successMessage.toString();
-
-		} else {
-			return failureMessage.toString();
-		}
-
-		//return attractionsService.getAttraction();
+		return attractionsService.getAttraction(geoCity);
 
 		// return "Attractions in Mysore are -- Brindavan Garden, Mysore Palace,
 		// Chamundeshwari Temple";

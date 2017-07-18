@@ -35,5 +35,41 @@ public class PlacesData {
 		pointsOfInterest.put(mysore, mysoreList);
 		
 		
+		City delhi = new City("Delhi", "32°C Rainy", "12.2958° N, 76.6394° E");
+		List<Attraction> delhiList = new ArrayList<Attraction>();  
+		Attraction d1 = new Attraction();
+		d1.setDescripation("");
+		d1.setPlace("India Gate");
+		delhiList.add(d1);
+		delhiList.add(new Attraction("Red Fort", "Fort"));
+		delhiList.add(new Attraction("Lotus Temple", "Temple"));
+		delhiList.add(new Attraction("Akshardham Temple", "Temple"));
+		pointsOfInterest.put(delhi, delhiList);
+		
+		
+		City kerla = new City("Kerala", "20°C cloudy", "12.2958° S, 76.6394° W");
+		List<Attraction> kerlaList = new ArrayList<Attraction>();  
+		Attraction k1 = new Attraction();
+		k1.setDescripation("");
+		k1.setPlace("kochi");
+		kerlaList.add(k1);
+		kerlaList.add(new Attraction("Waynad", "Hill Station"));
+		kerlaList.add(new Attraction("Munnar", "Hill Station"));
+		kerlaList.add(new Attraction("thekkady", "National Park"));
+		pointsOfInterest.put(kerla, kerlaList);
+		
+		
+		City sikkim = new City("Sikkim", "20°C Cloudy", "12.2958° N, 76.6394° E");
+		List<Attraction> sikkimList = new ArrayList<Attraction>();  
+		Attraction s1 = new Attraction();
+		s1.setDescripation("");
+		s1.setPlace("Yuksome");
+		sikkimList.add(s1);
+		sikkimList.add(new Attraction("Tsomgo Lake", "Lake"));
+		sikkimList.add(new Attraction("Nathula Pass", "Pass"));
+		sikkimList.add(new Attraction("Lachung", "Snow destination"));
+		pointsOfInterest.put(sikkim, sikkimList);
+		
+		
 	}
 }
