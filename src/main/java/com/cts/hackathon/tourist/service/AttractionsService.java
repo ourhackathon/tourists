@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
 import com.cts.hackathon.tourist.database.PlacesData;
 import com.cts.hackathon.tourist.model.Attraction;
 import com.cts.hackathon.tourist.model.City;
@@ -37,16 +38,17 @@ public class AttractionsService {
 			.parse("{\"speech\": \"No matching places found for the mentioned city\" ,\"displayText\": \"No matching places found for the mentioned city\"}")
 			.getAsJsonObject();
 			if (geoCity != "") {
-				System.out.println("Geo-city parameter is..." + geoCity);
 				List<Attraction> a1 = new ArrayList<Attraction>();
 				PlacesData p1 = new PlacesData();
 				Map<City, List<Attraction>> m1 = p1.getPointsOfInterest();
 				for(Entry<City, List<Attraction>> e: m1.entrySet()){
-					if(e.getKey().getCity().equals(geoCity)){
+					if(e.getKey().getCity().equalsIgnoreCase(geoCity)){
 						a1 = e.getValue();
-					} else {
-						return failureMessage.toString();
-					}
+					} 
+				}
+				
+				if(a1.isEmpty()) {
+					return failureMessage.toString();
 				}
 				StringBuffer success = new StringBuffer("Places of attractions in "+geoCity + " are: ");
 				for(int i = 0; i < a1.size(); i++) {
@@ -59,7 +61,7 @@ public class AttractionsService {
 				success.insert(0, speech);
 				success.insert(success.length(), displayText);
 				String jsonstring = success.toString();
-				JsonObject successMessage = new JsonParser().parse(jsonstring).getAsJsonObject();
+				String successMessage = new String(jsonstring);
 				
 				return successMessage.toString();
 
