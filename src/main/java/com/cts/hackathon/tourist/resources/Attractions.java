@@ -66,8 +66,18 @@ public class Attractions {
 		System.out.println("HTTP request contains following body..." + jsonObj);
 		
 		String geoCity = "";
-		try{
-			 geoCity = jsonObj.getAsJsonObject("result").getAsJsonObject("parameters").get("geo-city").getAsString();
+		String cityName="";
+		String intent="";
+		
+		// Cheking the attractions intent and sending the attraction details
+		if(jsonObj.getAsJsonObject("result").getAsJsonObject("metadata").get("intentName").getAsString().equals("Attractions")){
+		
+			try{
+			
+				
+				geoCity = jsonObj.getAsJsonObject("result").getAsJsonObject("parameters").get("geo-city").getAsString();
+			
+			 
 				
 		}catch(NullPointerException ne){
 			
@@ -77,9 +87,38 @@ public class Attractions {
 		
 
 		return attractionsService.getAttraction(geoCity);
+		}
+		
+		
+		//In case of Weather intent sent the weather details
+		
+		else {
+			
+			try{
+			
+				if(jsonObj.getAsJsonObject("result").getAsJsonObject("metadata").get("intentName").getAsString().equals("Weather")){
+					
+					cityName = jsonObj.getAsJsonObject("result").getAsJsonObject("parameters").get("cityname").getAsString();
+					
+				}
+				
+			
+			 
+				
+		}catch(NullPointerException ne){
+			
+			System.out.println("Null pointer exception");
+			 ne.printStackTrace();
+		}
+		
 
+		return attractionsService.getWeather(cityName);
+		}
+			
+		}
+		
 		// return "Attractions in Mysore are -- Brindavan Garden, Mysore Palace,
 		// Chamundeshwari Temple";
-	}
+	
 
 }

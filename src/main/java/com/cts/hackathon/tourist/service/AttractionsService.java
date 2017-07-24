@@ -70,6 +70,42 @@ public class AttractionsService {
 			}
 		}
 	
+		//Returning only one tourist spot
+				public String getWeather(String geoCity){
+					
+					JsonObject failureMessage = new JsonParser()
+					.parse("{\"speech\": \"Weather was not found for the mentioned city\" ,\"displayText\": \"Weather was not found for the mentioned city\"}")
+					.getAsJsonObject();
+					if (geoCity != "") {
+
+						PlacesData p1 = new PlacesData();
+						String weather="";
+						Map<City, List<Attraction>> m1 = p1.getPointsOfInterest();
+						for(Entry<City, List<Attraction>> e: m1.entrySet()){
+							if(e.getKey().getCity().equalsIgnoreCase(geoCity)){
+								weather = e.getKey().getWeather();
+							} 
+						}
+						
+						if(weather.isEmpty()) {
+							return failureMessage.toString();
+						}
+						StringBuffer success = new StringBuffer("Weather of  "+geoCity + " is: " + weather);
+					
+						String speech = "{\"speech\":\"";
+						String displayText = "\",\"displayText\": \"Its beautiful place to visit\"}";
+								
+						success.insert(0, speech);
+						success.insert(success.length(), displayText);
+						String jsonstring = success.toString();
+						String successMessage = new String(jsonstring);
+						
+						return successMessage.toString();
+
+					} else {
+						return failureMessage.toString();
+					}
+				}
 
 
 
